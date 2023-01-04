@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/retrofitFragment">
+
+    <fragment
+        android:id="@+id/first_fragment"
+        android:name="teeu.android.retrofit2coroutine.FirstFragment"
+        android:label="label_first"
+        tools:layout="@layout/fragment_first">
+        <action
+            android:id="@+id/action_first_fragment_to_second_fragment"
+            app:destination="@id/second_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/second_fragment"
+        android:name="teeu.android.retrofit2coroutine.SecondFragment"
+        android:label="label_second"
+        tools:layout="@layout/fragment_second">
+        <argument
+            android:name="string_data"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
+    <fragment
+        android:id="@+id/retrofitFragment"
+        android:name="teeu.android.retrofit2coroutine.RetrofitFragment"
+        android:label="RetrofitFragment" >
+        <action
+            android:id="@+id/action_retrofitFragment_to_first_fragment"
+            app:destination="@id/first_fragment" />
+    </fragment>
+</navigation>
