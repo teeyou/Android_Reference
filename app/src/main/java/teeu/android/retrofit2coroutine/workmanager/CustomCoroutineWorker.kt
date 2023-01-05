@@ -27,7 +27,7 @@ const val NOTIFICATION_ID = 1111
 class CustomCoroutineWorker(val context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
     private fun createNotification() : Notification {
         val intent = Intent(context, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_MUTABLE)
+        val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val notification = NotificationCompat
             .Builder(context, "foreground_channel_id")
@@ -52,7 +52,7 @@ class CustomCoroutineWorker(val context: Context, workerParams: WorkerParameters
         withContext(Dispatchers.IO) {
             val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
             vibrator.vibrate(VibrationEffect.createOneShot(2000, VibrationEffect.DEFAULT_AMPLITUDE))
-//            setForeground(getForegroundInfo()) 동작안함
+//            setForeground(getForegroundInfo())
             Log.d("MYTAG","coroutineWorker")
         }
         Result.success()

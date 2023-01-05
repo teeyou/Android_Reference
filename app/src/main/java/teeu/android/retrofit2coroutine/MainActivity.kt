@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 //        CustomWorkRequest().oneTimeWork(this)
 //        CustomWorkRequest().periodicWork(this)
 //        WorkManager.getInstance(this).cancelUniqueWork("workName")
-        CustomWorkRequest().coroutineWork(this)
+//        CustomWorkRequest().coroutineWork(this)
     }
 
     override fun onStop() {

@@ -1,0 +1,30 @@
+API 28이상부터 포그라운드서비스 권한 필요
+
+Android 12이상은 startForegroundServcie()
+12 이전은 startForeground(ONGOING_NOTIFICATION_ID, notification)
+
+포그라운드 서비스가 location , camera, microphone에 접근하려면
+<manifest>
+    ...
+    <service ...
+        android:foregroundServiceType="location|camera|microphone" />
+</manifest>
+
+onStartCommand의 반환값
+
+START_NOT_STICKY: 서비스를 명시적으로 다시 시작할 때 까지 만들지 않습니다.
+
+START_STICKY: 서비스를 다시 만들지만 마지막 Intent를 onStartCommand의 인자로 다시 전달하지 않습니다. 이는 일단 계속 살아있어야되지만 별다른 동작이 필요하지 않은 음악앱같은 서비스에 적절합니다.
+
+START_REDELIVER_INTENT: 마지막 Intent를 onStartCommand의 인자로 다시 전달해줍니다. 즉각적인 반응이 필요한 파일 다운로드 서비스 같은 곳에 적합합니다.
+
+Foreground를 실행시킨 후에 CoroutineWorker를 실행하면
+Activity를 종료해도 진동이 잘 울림
+
+ForegroundService - Notification 창에 고정되고,
+Activity를 실행한 것과 동일한 기능을 함
+
+Channel id 와 Notification id 동일하면 1개의 알림창만 생성
+Channel id 와 Notification id 다르면 여러개의 알림창 생성
+Channel id가 1개면 시스템 정보에서 1개 채널만 생성됨
+Channel id가 여러개면 시스템 정보에서 여러개 채널 생성됨

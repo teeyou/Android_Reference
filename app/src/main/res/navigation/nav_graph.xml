@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/retrofitFragment">
+    app:startDestination="@id/foregroundServiceFragment">
 
     <fragment
         android:id="@+id/first_fragment"
@@ -28,9 +28,10 @@
     <fragment
         android:id="@+id/retrofitFragment"
         android:name="teeu.android.retrofit2coroutine.RetrofitFragment"
-        android:label="RetrofitFragment" >
-        <action
-            android:id="@+id/action_retrofitFragment_to_first_fragment"
-            app:destination="@id/first_fragment" />
-    </fragment>
+        android:label="RetrofitFragment" />
+    <fragment
+        android:id="@+id/foregroundServiceFragment"
+        android:name="teeu.android.retrofit2coroutine.ForegroundServiceFragment"
+        android:label="fragment_foreground_service"
+        tools:layout="@layout/fragment_foreground_service" />
 </navigation>
